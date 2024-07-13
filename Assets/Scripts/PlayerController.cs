@@ -97,6 +97,15 @@ public class PlayerController : MonoBehaviour
         //Pucanje
         if (Input.GetMouseButtonDown(0))
         {
+            RaycastHit hit;
+            if(Physics.Raycast(camTrans.position, camTrans.forward, out hit, 50f))
+            {
+                if (Vector3.Distance(camTrans.position, hit.point) > 2f)
+                {
+                    firePoint.LookAt(hit.point);
+                }
+            } else firePoint.LookAt(camTrans.position+(camTrans.forward * 30f));
+
             Instantiate(bullet, firePoint.position, firePoint.rotation);
         }
 
