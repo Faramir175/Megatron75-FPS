@@ -23,6 +23,12 @@ public class PlayerController : MonoBehaviour
     public GameObject bullet;
     public Transform firePoint;
 
+    public static PlayerController instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         
