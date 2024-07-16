@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class BulletController : MonoBehaviour
     public GameObject impactEffect;
 
     public int damage = 1;
+
+    public bool damageEnemy;
+    public bool damagePlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +38,15 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy") { other.gameObject.GetComponent<EnemyHealthController>().DamageEnemy(damage); }
+        if (other.gameObject.tag == "Enemy" && damageEnemy) 
+        { 
+            other.gameObject.GetComponent<EnemyHealthController>().DamageEnemy(damage); 
+        }
+        if (other.gameObject.tag == "Player" && damagePlayer) 
+        {
+            //other.gameObject.GetComponent<EnemyHealthController>().DamagePlayer(damage); 
+            Debug.Log("Skrr igrac");
+        }
         Destroy(gameObject);
         Instantiate(impactEffect,transform.position+(transform.forward*(-moveSpeed*Time.deltaTime)),transform.rotation);
     }
