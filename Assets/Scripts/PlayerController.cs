@@ -25,13 +25,14 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
+    public Gun activeGun;
     private void Awake()
     {
         instance = this;
     }
     void Start()
     {
-        
+        UIController.Instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
     }
 
     void Update()
@@ -101,7 +102,8 @@ public class PlayerController : MonoBehaviour
         camTrans.rotation = Quaternion.Euler(camTrans.rotation.eulerAngles + new Vector3(-mouseInput.y,0f,0f));
 
         //Pucanje
-        if (Input.GetMouseButtonDown(0))
+        //Jedan metak
+        if (Input.GetMouseButtonDown(0) && activeGun.fireCounter <=0)
         {
             RaycastHit hit;
             if(Physics.Raycast(camTrans.position, camTrans.forward, out hit, 50f))
@@ -112,10 +114,31 @@ public class PlayerController : MonoBehaviour
                 }
             } else firePoint.LookAt(camTrans.position+(camTrans.forward * 30f));
 
-            Instantiate(bullet, firePoint.position, firePoint.rotation);
+            //Instantiate(bullet, firePoint.position, firePoint.rotation);
+            fireShot();
+        }
+
+        //Rafal
+        if(Input.GetMouseButton(0) && activeGun.canAutoFire)
+        {
+            if (activeGun.fireCounter <= 0)
+            {
+                fireShot();
+            }
         }
 
         anim.SetFloat("MoveSpeed",moveInput.magnitude);
         anim.SetBool("onGround",canJump);
+    }
+
+    public void fireShot()
+    {
+        if (activeGun.currentAmmo > 0) 
+        { 
+            activeGun.currentAmmo--;
+            UIController.Instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+            Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
+            activeGun.fireCounter = activeGun.fireRate;
+        }
     }
 }
