@@ -44,8 +44,7 @@ public class BulletController : MonoBehaviour
         }
         if (other.gameObject.tag == "Player" && damagePlayer) 
         {
-            //other.gameObject.GetComponent<EnemyHealthController>().DamagePlayer(damage); 
-            Debug.Log("Skrr igrac");
+            PlayerHealthController.instance.damagePlayer(damage);
         }
         Destroy(gameObject);
         Instantiate(impactEffect,transform.position+(transform.forward*(-moveSpeed*Time.deltaTime)),transform.rotation);

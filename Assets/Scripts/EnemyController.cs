@@ -63,7 +63,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                agent.destination = targetPoint;
+                agent.destination = transform.position;
             }
 
             if(Vector3.Distance(transform.position, targetPoint) > distanceToLose)
@@ -82,9 +82,10 @@ public class EnemyController : MonoBehaviour
             }
             else
             { 
-                shootTimeCounter -= Time.deltaTime;
+                if(PlayerController.instance.gameObject.activeInHierarchy) { 
+                    shootTimeCounter -= Time.deltaTime;
 
-                if(shootTimeCounter>0)
+                if (shootTimeCounter>0)
                 {
                     fireCount -= Time.deltaTime;
                     if (fireCount <= 0)
@@ -113,7 +114,7 @@ public class EnemyController : MonoBehaviour
                 {
                     shotWaitCounter = waitBetweenShots;
                 }
-
+                }
             }
         }
     }
