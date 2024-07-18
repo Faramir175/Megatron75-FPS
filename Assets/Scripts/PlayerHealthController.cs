@@ -31,6 +31,9 @@ public class PlayerHealthController : MonoBehaviour
     public void damagePlayer(int damage)
     {
         currentHealth -= damage;
+
+        UIController.Instance.showDamage();
+
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
