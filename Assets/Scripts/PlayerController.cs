@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!UIController.Instance.pauseScreen.activeInHierarchy)
+        {
         //Kretanje igraca
 
         //moveInput.x = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
@@ -162,6 +164,8 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("MoveSpeed",moveInput.magnitude);
         anim.SetBool("onGround",canJump);
+
+        }
     }
 
     
