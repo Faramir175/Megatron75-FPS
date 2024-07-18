@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9165125334324767815}
   - component: {fileID: 4727956434779684277}
   m_Layer: 9
-  m_Name: Enemy Bullet
+  m_Name: Pistol bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: beb7eff174b14fc4a95baf7a8dc9c240, type: 2}
+  - {fileID: 2100000, guid: 0633abfc1a9605c44bccff65f55e596d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -123,10 +123,10 @@ MonoBehaviour:
   moveSpeed: 15
   lifeTime: 5
   theRB: {fileID: 9165125334324767815}
-  impactEffect: {fileID: 4222858785586542321, guid: 00b3e1bf387ea164cb79346454fb6db5, type: 3}
-  damage: 10
-  damageEnemy: 0
-  damagePlayer: 1
+  impactEffect: {fileID: 4222858785586542321, guid: b7d1cbd02b034a64497950d983e1a191, type: 3}
+  damage: 3
+  damageEnemy: 1
+  damagePlayer: 0
 --- !u!54 &9165125334324767815
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: beb7eff174b14fc4a95baf7a8dc9c240, type: 2}
+  - {fileID: 2100000, guid: 0633abfc1a9605c44bccff65f55e596d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

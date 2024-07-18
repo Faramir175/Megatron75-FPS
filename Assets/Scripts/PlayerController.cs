@@ -20,19 +20,22 @@ public class PlayerController : MonoBehaviour
 
     public Animator anim;
 
-    public GameObject bullet;
+    //public GameObject bullet;
     public Transform firePoint;
 
     public static PlayerController instance;
 
     public Gun activeGun;
+    public List<Gun> allGuns = new List<Gun>();
+    public int currentGun;
     private void Awake()
     {
         instance = this;
     }
     void Start()
     {
-        UIController.Instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+        currentGun--;
+        switchGun();
     }
 
     void Update()
@@ -127,6 +130,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            switchGun();
+        }
+
         anim.SetFloat("MoveSpeed",moveInput.magnitude);
         anim.SetBool("onGround",canJump);
     }
@@ -140,5 +148,20 @@ public class PlayerController : MonoBehaviour
             Instantiate(activeGun.bullet, firePoint.position, firePoint.rotation);
             activeGun.fireCounter = activeGun.fireRate;
         }
+    }
+
+    public void switchGun()
+    {
+        activeGun.gameObject.SetActive(false);
+        currentGun++;
+
+        if (currentGun >= allGuns.Count) currentGun = 0;
+
+        activeGun = allGuns[currentGun];
+        activeGun.gameObject.SetActive(true);
+
+        UIController.Instance.ammoText.text = "AMMO: " + activeGun.currentAmmo;
+
+        firePoint.position = activeGun.firepoint.position;
     }
 }
