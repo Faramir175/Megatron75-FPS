@@ -823,6 +823,7 @@ MonoBehaviour:
   currentAmmo: 15
   pickupAmount: 5
   firepoint: {fileID: 1879482605}
+  zoomAmount: 20
 --- !u!1001 &227759426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1196,6 +1197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2114753834}
   - {fileID: 282109179}
   m_Father: {fileID: 953566207}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1283,7 +1285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4187589826811268711, guid: 8434d74bfe32e7548ada570db5295128, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.106
+      value: -0.011
       objectReference: {fileID: 0}
     - target: {fileID: 4187589826811268711, guid: 8434d74bfe32e7548ada570db5295128, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1758,6 +1760,9 @@ MonoBehaviour:
   - {fileID: 1516769858}
   - {fileID: 190604458}
   currentGun: 0
+  adsPoint: {fileID: 2114753834}
+  gunHolder: {fileID: 282109179}
+  adsSpeed: 2
 --- !u!143 &953566206
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1862,7 +1867,7 @@ Transform:
   m_GameObject: {fileID: 982740411}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.327, y: -0.33599997, z: 1.189}
+  m_LocalPosition: {x: 0.346, y: -0.33599997, z: 1.189}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2109,6 +2114,7 @@ MonoBehaviour:
   currentAmmo: 20
   pickupAmount: 15
   firepoint: {fileID: 982740412}
+  zoomAmount: 50
 --- !u!1 &1173928596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,7 +2140,7 @@ Transform:
   m_GameObject: {fileID: 1173928596}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.103, y: 0, z: 0.826}
+  m_LocalPosition: {x: -0.012, y: 0, z: 0.826}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2450,6 +2456,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 416519503}
+  zoomSpeed: 5
+  theCam: {fileID: 1420946399}
 --- !u!1 &1422550907
 GameObject:
   m_ObjectHideFlags: 0
@@ -3135,7 +3143,7 @@ Transform:
   m_GameObject: {fileID: 1516769856}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: -0.301, z: 0.601}
+  m_LocalPosition: {x: 0.425, y: -0.301, z: 0.601}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3162,6 +3170,7 @@ MonoBehaviour:
   currentAmmo: 60
   pickupAmount: 30
   firepoint: {fileID: 1173928597}
+  zoomAmount: 40
 --- !u!1 &1527716419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3641,6 +3650,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1458211410}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2114753833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2114753834}
+  m_Layer: 0
+  m_Name: ads point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2114753834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114753833}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.412, y: 0, z: 0.319}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 416519503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2126674188
 GameObject:

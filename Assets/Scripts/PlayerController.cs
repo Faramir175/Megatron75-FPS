@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -28,6 +29,10 @@ public class PlayerController : MonoBehaviour
     public Gun activeGun;
     public List<Gun> allGuns = new List<Gun>();
     public int currentGun;
+
+    public Transform adsPoint,gunHolder;
+    private Vector3 gunStartPosition;
+    public float adsSpeed=2;
     private void Awake()
     {
         instance = this;
@@ -36,6 +41,8 @@ public class PlayerController : MonoBehaviour
     {
         currentGun--;
         switchGun();
+
+        gunStartPosition = gunHolder.localPosition; 
     }
 
     void Update()
@@ -135,10 +142,29 @@ public class PlayerController : MonoBehaviour
             switchGun();
         }
 
+
+        if (Input.GetMouseButton(1))
+        {
+            gunHolder.position = Vector3.MoveTowards(gunHolder.position, adsPoint.position, adsSpeed * Time.deltaTime);
+        }
+        else
+        {
+            gunHolder.localPosition = Vector3.MoveTowards(gunHolder.localPosition,gunStartPosition,adsSpeed* Time.deltaTime);
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            CameraController.instance.ZoomIn(activeGun.zoomAmount);
+        }
+        if (Input.GetMouseButtonUp(1))
+        {
+            CameraController.instance.ZoomOut();
+        }
+
         anim.SetFloat("MoveSpeed",moveInput.magnitude);
         anim.SetBool("onGround",canJump);
     }
 
+    
     public void fireShot()
     {
         if (activeGun.currentAmmo > 0) 
