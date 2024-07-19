@@ -27,3 +27,19 @@ public class EnemyHealthController : MonoBehaviour
         }
     }
 }
+
+/*
+         currentHealth -= damageAmount;
+
+        if(theEC != null)
+        {
+            theEC.GetShot();
+        }
+
+        if(currentHealth <= 0)
+        {
+            Destroy(gameObject);
+
+            AudioManager.instance.PlaySFX(2);
+        }
+  */
