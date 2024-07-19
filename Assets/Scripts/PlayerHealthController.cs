@@ -33,12 +33,14 @@ public class PlayerHealthController : MonoBehaviour
         currentHealth -= damage;
 
         UIController.Instance.showDamage();
+        AudioManager.instance.playSFX(3);
 
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
             currentHealth = 0;
             GameManager.Instance.playerDied();
+            AudioManager.instance.playSFX(2);
         }
         UIController.Instance.healthSlider.value = currentHealth;
 

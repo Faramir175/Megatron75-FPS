@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     public Transform adsPoint,gunHolder;
     private Vector3 gunStartPosition;
     public float adsSpeed=2;
+    public AudioSource footstepFast, footstepSlow;
     private void Awake()
     {
         instance = this;
@@ -90,12 +91,18 @@ public class PlayerController : MonoBehaviour
         {
             moveInput.y = jumpPower;
             canDoubleJump = true;
-        }else if(canDoubleJump && Input.GetKeyDown(KeyCode.Space)) 
-        { 
-            moveInput.y = jumpPower; canDoubleJump = false; 
-        }
+                AudioManager.instance.playSFX(4);
 
-        charCon.Move(moveInput * Time.deltaTime);
+            }
+            else if(canDoubleJump && Input.GetKeyDown(KeyCode.Space)) 
+        { 
+            moveInput.y = jumpPower; 
+            canDoubleJump = false;
+            AudioManager.instance.playSFX(4);
+
+            }
+
+            charCon.Move(moveInput * Time.deltaTime);
 
         //Kontrolisanje rotacije kamere
 

@@ -13,6 +13,7 @@ public class AmmoPickup : MonoBehaviour
 
             Destroy(gameObject);
             collected = true;
+            AudioManager.instance.playSFX(0);
         }
     }
 }

@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public float waitAfterDying = 2f;
+    public float waitAfterDying = 5f;
 
     private void Awake()
     {
@@ -50,12 +50,18 @@ public class GameManager : MonoBehaviour
             UIController.Instance.pauseScreen.SetActive(false);
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1f;
+
+            PlayerController.instance.footstepFast.Play();
+            PlayerController.instance.footstepSlow.Play();
         }
         else
         {
             UIController.Instance.pauseScreen.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Time.timeScale = 0f;
+
+            PlayerController.instance.footstepFast.Stop();
+            PlayerController.instance.footstepSlow.Stop();
         }
     }
 }
