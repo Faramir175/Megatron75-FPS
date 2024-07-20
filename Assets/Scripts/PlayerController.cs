@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (!UIController.Instance.pauseScreen.activeInHierarchy)
+        if (!UIController.Instance.pauseScreen.activeInHierarchy && !GameManager.Instance.ending)
         {
         //Kretanje igraca
 

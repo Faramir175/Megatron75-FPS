@@ -35,7 +35,7 @@ public class PlayerHealthController : MonoBehaviour
         UIController.Instance.showDamage();
         AudioManager.instance.playSFX(3);
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !GameManager.Instance.ending)
         {
             gameObject.SetActive(false);
             currentHealth = 0;
