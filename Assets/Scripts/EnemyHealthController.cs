@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnemyHealthController : MonoBehaviour
 {
-    
     public int currentHealth = 5;
+
+    public EnemyController theEC;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,27 +20,19 @@ public class EnemyHealthController : MonoBehaviour
 
     }
 
-    public void DamageEnemy(int damageTekken) {
-        currentHealth -= damageTekken;
-        if(currentHealth <= 0) 
-        { 
-            Destroy(gameObject); 
-        }
-    }
-}
+    public void DamageEnemy(int damageAmount)
+    {
+        currentHealth -= damageAmount;
 
-/*
-         currentHealth -= damageAmount;
-
-        if(theEC != null)
+        if (theEC != null)
         {
             theEC.GetShot();
         }
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
 
-            AudioManager.instance.PlaySFX(2);
         }
-  */
+    }
+}

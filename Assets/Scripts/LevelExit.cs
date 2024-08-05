@@ -27,6 +27,7 @@ public class LevelExit : MonoBehaviour
         if (other.tag == "Player")
         {
             GameManager.Instance.ending = true;
+            //Debug.Log("SKRTTTT");
             StartCoroutine(EndLevelCo());
         }
     }
